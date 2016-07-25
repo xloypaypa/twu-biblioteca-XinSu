@@ -46,11 +46,11 @@ public class ListBooksLogicTest extends LogicTesing {
 
         UIEvent uiEvent = UIThread.getUiThread().getNextUIEvent();
 
-        assertEquals("1 book-1 author-0 19990\r\n" +
-                "3 book-3 author-1 19991\r\n" +
-                "5 book-5 author-2 19991\r\n" +
-                "7 book-7 author-3 19992\r\n" +
-                "9 book-9 author-4 19993\r\n", uiEvent.getMessage());
+        assertEquals("id: 1; name: book-1; author: author-0; year: 19990\r\n" +
+                "id: 3; name: book-3; author: author-1; year: 19991\r\n" +
+                "id: 5; name: book-5; author: author-2; year: 19991\r\n" +
+                "id: 7; name: book-7; author: author-3; year: 19992\r\n" +
+                "id: 9; name: book-9; author: author-4; year: 19993\r\n", uiEvent.getMessage());
     }
 
     @Test
@@ -60,15 +60,15 @@ public class ListBooksLogicTest extends LogicTesing {
 
         UIEvent uiEvent = UIThread.getUiThread().getNextUIEvent();
 
-        assertEquals("0 book-0 author-0 19990\r\n" +
-                "1 book-1 author-0 19990\r\n" +
-                "2 book-2 author-1 19990\r\n" +
-                "3 book-3 author-1 19991\r\n" +
-                "4 book-4 author-2 19991\r\n" +
-                "5 book-5 author-2 19991\r\n" +
-                "6 book-6 author-3 19992\r\n" +
-                "7 book-7 author-3 19992\r\n" +
-                "8 book-8 author-4 19992\r\n" +
-                "9 book-9 author-4 19993\r\n", uiEvent.getMessage());
+        assertEquals("id: 0; name: book-0; author: author-0; year: 19990\r\n" +
+                "id: 1; name: book-1; author: author-0; year: 19990\r\n" +
+                "id: 2; name: book-2; author: author-1; year: 19990\r\n" +
+                "id: 3; name: book-3; author: author-1; year: 19991\r\n" +
+                "id: 4; name: book-4; author: author-2; year: 19991\r\n" +
+                "id: 5; name: book-5; author: author-2; year: 19991\r\n" +
+                "id: 6; name: book-6; author: author-3; year: 19992\r\n" +
+                "id: 7; name: book-7; author: author-3; year: 19992\r\n" +
+                "id: 8; name: book-8; author: author-4; year: 19992\r\n" +
+                "id: 9; name: book-9; author: author-4; year: 19993\r\n", uiEvent.getMessage());
     }
 }

@@ -28,7 +28,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return this.getId() + " " + this.getBookName() + " " + this.getAuthor() + " " + this.getYearPublished();
+        return "id: " + this.getId() + "; name: " + this.getBookName() + "; author: " + this.getAuthor() + "; year: " + this.getYearPublished();
     }
 
     public Map<String, Object> getData() {
