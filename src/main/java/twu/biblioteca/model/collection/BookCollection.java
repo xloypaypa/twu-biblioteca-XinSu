@@ -12,11 +12,11 @@ import java.util.Map;
  * it's the book collection.
  * it's work as a mock db
  */
-public class BookCollections {
+public class BookCollection {
 
     private Map<String, Book> bookMap;
 
-    public BookCollections() {
+    public BookCollection() {
         this.bookMap = new HashMap<>();
     }
 
