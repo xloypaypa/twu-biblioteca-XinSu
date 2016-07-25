@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  * Created by xsu on 16/7/25.
  * it's the testing code for list books.
  */
-public class ListBooksLogicTest {
+public class ListBooksLogicTest extends LogicTesing {
 
     @Before
     public void setUp() throws Exception {

@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
  * Created by xsu on 16/7/25.
  * it's the testing code for welcome logic testing
  */
-public class WelcomeLogicTest {
+public class WelcomeLogicTest extends LogicTesing {
 
     @Test
     public void should_add_welcome_message_to_ui() throws Exception {
