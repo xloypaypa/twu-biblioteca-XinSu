@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class MainMenuLogic implements LogicNode {
     @Override
     public void action() throws Exception {
-        UIThread.getUiThread().addEvent(new UIEvent("Please input \"1\" to list all books", new UIEventCallBack() {
+        UIThread.getUiThread().addEvent(new UIEvent("Please select one command\r\n1.list books", new UIEventCallBack() {
             @Override
             public void action() {
                 Scanner scanner = new Scanner(System.in);

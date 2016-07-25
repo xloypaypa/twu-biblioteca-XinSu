@@ -17,7 +17,7 @@ public class MainMenuLogicTest {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.action();
 
-        assertEquals("Please input \"1\" to list all books", UIThread.getUiThread().getNextUIEvent().getMessage());
+        assertEquals("Please select one command\r\n1.list books", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
 
     @Test
