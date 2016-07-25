@@ -22,11 +22,11 @@ public class WelcomeLogicTest {
     }
 
     @Test
-    public void should_add_list_book_to_control_logic() throws Exception {
+    public void should_add_main_menu_to_control_logic() throws Exception {
         WelcomeLogic welcomeLogic = new WelcomeLogic();
         welcomeLogic.action();
 
         Class<? extends LogicNode> clazz = ControlThread.getControlThread().getNextEvent();
-        assertEquals(ListBooksLogic.class, clazz);
+        assertEquals(MainMenuLogic.class, clazz);
     }
 }

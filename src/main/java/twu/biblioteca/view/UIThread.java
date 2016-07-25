@@ -30,6 +30,7 @@ public class UIThread extends Thread {
                 UIEvent uiEvent = getNextUIEvent();
                 if (uiEvent != null) {
                     System.out.println(uiEvent.getMessage());
+                    uiEvent.afterShowMessage();
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
