@@ -13,11 +13,20 @@ import static org.junit.Assert.assertEquals;
 public class WelcomeLogicTest {
 
     @Test
-    public void name() throws Exception {
+    public void should_add_welcome_message_to_ui() throws Exception {
         WelcomeLogic welcomeLogic = new WelcomeLogic();
         welcomeLogic.action();
 
         UIEvent uiEvent = UIThread.getUiThread().getNextUIEvent();
         assertEquals("this is welcome message :p", uiEvent.getMessage());
+    }
+
+    @Test
+    public void should_add_list_book_to_control_logic() throws Exception {
+        WelcomeLogic welcomeLogic = new WelcomeLogic();
+        welcomeLogic.action();
+
+        Class<? extends LogicNode> clazz = ControlThread.getControlThread().getNextEvent();
+        assertEquals(ListBooksLogic.class, clazz);
     }
 }

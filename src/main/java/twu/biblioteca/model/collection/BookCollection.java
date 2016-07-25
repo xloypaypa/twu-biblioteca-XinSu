@@ -14,9 +14,15 @@ import java.util.Map;
  */
 public class BookCollection {
 
+    private static BookCollection bookCollection = new BookCollection();
+
+    public static BookCollection getBookCollection() {
+        return bookCollection;
+    }
+
     private Map<String, Book> bookMap;
 
-    public BookCollection() {
+    private BookCollection() {
         this.bookMap = new HashMap<>();
     }
 
@@ -25,12 +31,9 @@ public class BookCollection {
     }
 
     public void removeData(Map<String, Object> filter) {
-        for (String id : bookMap.keySet()) {
-            Book now = bookMap.get(id);
-            boolean isMatch = checkBookIsMatchFilter(filter, now);
-            if (isMatch) {
-                this.bookMap.remove(id);
-            }
+        List<Book> needRemoveId = findData(filter);
+        for (Book book : needRemoveId) {
+            this.bookMap.remove(book.getId());
         }
     }
 

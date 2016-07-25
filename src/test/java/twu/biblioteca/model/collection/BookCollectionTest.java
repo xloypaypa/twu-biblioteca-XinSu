@@ -19,7 +19,7 @@ public class BookCollectionTest {
 
     @Before
     public void setUp() throws Exception {
-        this.bookCollection = new BookCollection();
+        this.bookCollection = BookCollection.getBookCollection();
     }
 
     @Test

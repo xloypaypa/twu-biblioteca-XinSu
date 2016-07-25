@@ -11,5 +11,6 @@ public class WelcomeLogic implements LogicNode {
     @Override
     public void action() throws Exception {
         UIThread.getUiThread().addEvent(new UIEvent("this is welcome message :p"));
+        ControlThread.getControlThread().addEvent(ListBooksLogic.class);
     }
 }

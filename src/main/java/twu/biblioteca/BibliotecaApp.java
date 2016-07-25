@@ -1,6 +1,7 @@
 package twu.biblioteca;
 
 import twu.biblioteca.control.ControlThread;
+import twu.biblioteca.control.ListBooksLogic;
 import twu.biblioteca.control.WelcomeLogic;
 import twu.biblioteca.model.collection.BookCollection;
 import twu.biblioteca.model.entity.Book;
@@ -13,6 +14,7 @@ public class BibliotecaApp {
 
         ControlThread controlThread = ControlThread.getControlThread();
         controlThread.registerLogicNode(new WelcomeLogic());
+        controlThread.registerLogicNode(new ListBooksLogic());
         controlThread.addEvent(WelcomeLogic.class);
 
         startThread();
@@ -24,7 +26,7 @@ public class BibliotecaApp {
     }
 
     private static void initCollection() {
-        BookCollection bookCollection = new BookCollection();
+        BookCollection bookCollection = BookCollection.getBookCollection();
         for (int i = 0; i < 10; i++) {
             bookCollection.insertData(new Book(Integer.toString(i), "book-" + i));
         }
