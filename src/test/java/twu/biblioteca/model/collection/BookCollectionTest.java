@@ -24,7 +24,7 @@ public class BookCollectionTest {
 
     @Test
     public void should_can_be_find_after_insert_data() throws Exception {
-        Book book = new Book("1", "b1", "author-1", "1999");
+        Book book = new Book("1", "b1", "author-1", "1999", false);
 
         this.bookCollection.insertData(book);
         Map<String, Object> filter = new HashMap<>();
@@ -35,7 +35,7 @@ public class BookCollectionTest {
 
     @Test
     public void should_not_have_data_after_remove_data() throws Exception {
-        Book book = new Book("1", "b1", "author-1", "1999");
+        Book book = new Book("1", "b1", "author-1", "1999", false);
         this.bookCollection.insertData(book);
 
         Map<String, Object> filter = new HashMap<>();

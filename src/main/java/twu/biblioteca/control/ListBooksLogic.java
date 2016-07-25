@@ -15,7 +15,9 @@ import java.util.List;
 public class ListBooksLogic implements LogicNode {
     @Override
     public void action() throws Exception {
-        List<Book> books = BookCollection.getBookCollection().findData(new HashMap<String, Object>());
+        HashMap<String, Object> filter = new HashMap<>();
+        filter.put(Book.BOOK_IS_CHECKOUT_FIELD, false);
+        List<Book> books = BookCollection.getBookCollection().findData(filter);
         String message = "";
         for (Book book : books) {
             message += book.toString() + "\r\n";

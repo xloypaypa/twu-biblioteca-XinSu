@@ -42,7 +42,7 @@ public class ControlThread extends Thread {
     }
 
     public Class<? extends LogicNode> getNextEvent() throws InterruptedException {
-        return eventBlockingQueue.poll(1L, TimeUnit.SECONDS);
+        return eventBlockingQueue.poll(20L, TimeUnit.MICROSECONDS);
     }
 
     public void registerLogicNode(LogicNode logicNode) {

@@ -39,7 +39,7 @@ public class UIThread extends Thread {
     }
 
     public UIEvent getNextUIEvent() throws InterruptedException {
-        return eventBlockingQueue.poll(1L, TimeUnit.SECONDS);
+        return eventBlockingQueue.poll(20L, TimeUnit.MICROSECONDS);
     }
 
     public void addEvent(UIEvent uiEvent) {

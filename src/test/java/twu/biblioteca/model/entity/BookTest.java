@@ -12,7 +12,7 @@ public class BookTest {
 
     @Test
     public void should_get_id_name_author_and_year_published_when_to_string() throws Exception {
-        Book book = new Book("i", "n", "a", "1");
+        Book book = new Book("i", "n", "a", "1", false);
 
         assertEquals("i n a 1", book.toString());
     }

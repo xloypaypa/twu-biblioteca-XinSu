@@ -7,6 +7,8 @@ import twu.biblioteca.model.entity.Book;
 import twu.biblioteca.view.UIEvent;
 import twu.biblioteca.view.UIThread;
 
+import java.util.HashMap;
+
 import static org.junit.Assert.*;
 
 /**
@@ -19,7 +21,7 @@ public class ListBooksLogicTest extends LogicTesing {
     public void setUp() throws Exception {
         BookCollection bookCollection = BookCollection.getBookCollection();
         for (int i = 0; i < 10; i++) {
-            bookCollection.insertData(new Book(Integer.toString(i), "book-" + i, "author-" + i / 2, "1999" + i / 3));
+            bookCollection.insertData(new Book(Integer.toString(i), "book-" + i, "author-" + i / 2, "1999" + i / 3, false));
         }
     }
 
@@ -29,6 +31,26 @@ public class ListBooksLogicTest extends LogicTesing {
         listBooksLogic.action();
 
         assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent());
+    }
+
+    @Test
+    public void should_only_list_books_not_checkout() throws Exception {
+        BookCollection bookCollection = BookCollection.getBookCollection();
+        bookCollection.removeData(new HashMap<String, Object>());
+        for (int i = 0; i < 10; i++) {
+            bookCollection.insertData(new Book(Integer.toString(i), "book-" + i, "author-" + i / 2, "1999" + i / 3, i % 2 == 0));
+        }
+
+        ListBooksLogic listBooksLogic = new ListBooksLogic();
+        listBooksLogic.action();
+
+        UIEvent uiEvent = UIThread.getUiThread().getNextUIEvent();
+
+        assertEquals("1 book-1 author-0 19990\r\n" +
+                "3 book-3 author-1 19991\r\n" +
+                "5 book-5 author-2 19991\r\n" +
+                "7 book-7 author-3 19992\r\n" +
+                "9 book-9 author-4 19993\r\n", uiEvent.getMessage());
     }
 
     @Test
