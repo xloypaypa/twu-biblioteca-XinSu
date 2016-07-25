@@ -21,5 +21,6 @@ public class ListBooksLogic implements LogicNode {
             message += book.toString() + "\r\n";
         }
         UIThread.getUiThread().addEvent(new UIEvent(message));
+        ControlThread.getControlThread().addEvent(MainMenuLogic.class);
     }
 }
