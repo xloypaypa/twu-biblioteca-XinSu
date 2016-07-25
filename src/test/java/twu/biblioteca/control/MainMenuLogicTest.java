@@ -39,11 +39,12 @@ public class MainMenuLogicTest {
     }
 
     @Test
-    public void should_not_add_list_books_event_when_input_not_1() throws Exception {
+    public void should_show_error_message_and_back_to_main_menu() throws Exception {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(2);
 
-        assertNull(ControlThread.getControlThread().getNextEvent());
+        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals("Select a valid option!", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
 
 }

@@ -26,6 +26,9 @@ public class MainMenuLogic implements LogicNode {
     public void getInputMessage(int value) {
         if (value == 1) {
             ControlThread.getControlThread().addEvent(ListBooksLogic.class);
+        } else {
+            UIThread.getUiThread().addEvent(new UIEvent("Select a valid option!"));
+            ControlThread.getControlThread().addEvent(MainMenuLogic.class);
         }
     }
 }
