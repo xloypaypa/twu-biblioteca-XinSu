@@ -28,7 +28,7 @@ public class BibliotecaApp {
     private static void initCollection() {
         BookCollection bookCollection = BookCollection.getBookCollection();
         for (int i = 0; i < 10; i++) {
-            bookCollection.insertData(new Book(Integer.toString(i), "book-" + i));
+            bookCollection.insertData(new Book(Integer.toString(i), "book-" + i, "author-1", "1999"));
         }
     }
 }

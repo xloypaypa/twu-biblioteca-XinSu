@@ -18,7 +18,7 @@ public class ListBooksLogic implements LogicNode {
         List<Book> books = BookCollection.getBookCollection().findData(new HashMap<String, Object>());
         String message = "";
         for (Book book : books) {
-            message += book.getId() + " " + book.getBookName() + "\r\n";
+            message += book.toString() + "\r\n";
         }
         UIThread.getUiThread().addEvent(new UIEvent(message));
     }

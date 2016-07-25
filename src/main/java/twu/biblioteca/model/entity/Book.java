@@ -11,13 +11,22 @@ public class Book {
 
     public static final String BOOK_ID_FIELD = "id";
     public static final String BOOK_NAME_FIELD = "bookName";
+    public static final String BOOK_AUTHOR_FIELD = "author";
+    public static final String BOOK_YEAR_PUBLISHED = "year";
 
     private Map<String, String> data;
 
-    public Book(String id, String bookName) {
+    public Book(String id, String bookName, String author, String yearPublished) {
         this.data = new HashMap<>();
         this.setId(id);
         this.setBookName(bookName);
+        this.setAuthor(author);
+        this.setYearPublished(yearPublished);
+    }
+
+    @Override
+    public String toString() {
+        return this.getId() + " " + this.getBookName() + " " + this.getAuthor() + " " + this.getYearPublished();
     }
 
     public Map<String, String> getData() {
@@ -38,5 +47,21 @@ public class Book {
 
     public void setBookName(String bookName) {
         this.data.put(BOOK_NAME_FIELD, bookName);
+    }
+
+    public String getAuthor() {
+        return this.data.get(BOOK_AUTHOR_FIELD);
+    }
+
+    public void setAuthor(String author) {
+        this.data.put(BOOK_AUTHOR_FIELD, author);
+    }
+
+    public String getYearPublished() {
+        return this.data.get(BOOK_YEAR_PUBLISHED);
+    }
+
+    public void setYearPublished(String yearPublished) {
+        this.data.put(BOOK_YEAR_PUBLISHED, yearPublished);
     }
 }
