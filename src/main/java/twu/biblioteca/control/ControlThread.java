@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by xsu on 16/7/25.
@@ -31,7 +32,9 @@ public class ControlThread extends Thread {
         while (true) {
             try {
                 Class<? extends LogicNode> clazz = getNextEvent();
-                logicNodeMap.get(clazz).action();
+                if (clazz != null) {
+                    logicNodeMap.get(clazz).action();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -39,7 +42,7 @@ public class ControlThread extends Thread {
     }
 
     public Class<? extends LogicNode> getNextEvent() throws InterruptedException {
-        return eventBlockingQueue.take();
+        return eventBlockingQueue.poll(1L, TimeUnit.SECONDS);
     }
 
     public void registerLogicNode(LogicNode logicNode) {

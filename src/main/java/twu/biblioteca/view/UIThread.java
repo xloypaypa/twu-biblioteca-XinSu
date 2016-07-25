@@ -2,6 +2,7 @@ package twu.biblioteca.view;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by xsu on 16/7/25.
@@ -27,7 +28,9 @@ public class UIThread extends Thread {
         while (true) {
             try {
                 UIEvent uiEvent = getNextUIEvent();
-                System.out.println(uiEvent.getMessage());
+                if (uiEvent != null) {
+                    System.out.println(uiEvent.getMessage());
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -35,7 +38,7 @@ public class UIThread extends Thread {
     }
 
     public UIEvent getNextUIEvent() throws InterruptedException {
-        return eventBlockingQueue.take();
+        return eventBlockingQueue.poll(1L, TimeUnit.SECONDS);
     }
 
     public void addEvent(UIEvent uiEvent) {
