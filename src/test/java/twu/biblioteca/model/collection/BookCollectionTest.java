@@ -28,7 +28,7 @@ public class BookCollectionTest {
 
         this.bookCollection.insertData(book);
         Map<String, Object> filter = new HashMap<>();
-        filter.put("bookName", "b1");
+        filter.put(Book.BOOK_NAME_FIELD, "b1");
 
         assertEquals(1, this.bookCollection.findData(filter).size());
     }
@@ -39,10 +39,22 @@ public class BookCollectionTest {
         this.bookCollection.insertData(book);
 
         Map<String, Object> filter = new HashMap<>();
-        filter.put("bookName", "b1");
+        filter.put(Book.BOOK_NAME_FIELD, "b1");
         this.bookCollection.removeData(filter);
 
         assertEquals(0, this.bookCollection.findData(filter).size());
+    }
+
+    @Test
+    public void check_update_data() throws Exception {
+        Book book = new Book("1", "b1", "author-1", "1999", false);
+        this.bookCollection.insertData(book);
+        Book after = new Book("1", "b2", "", "", true);
+        this.bookCollection.updateData(after);
+
+        Map<String, Object> filter = new HashMap<>();
+        filter.put(Book.BOOK_ID_FIELD, "1");
+        assertEquals("b2", this.bookCollection.findData(filter).get(0).getBookName());
     }
 
 }

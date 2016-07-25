@@ -37,6 +37,10 @@ public class BookCollection {
         }
     }
 
+    public void updateData(Book book) {
+        this.bookMap.put(book.getId(), book);
+    }
+
     public List<Book> findData(Map<String, Object> filter) {
         List<Book> result = new ArrayList<>();
         for (String id : bookMap.keySet()) {
@@ -60,4 +64,7 @@ public class BookCollection {
         return isMatch;
     }
 
+    public void clear() {
+        this.bookMap.clear();
+    }
 }

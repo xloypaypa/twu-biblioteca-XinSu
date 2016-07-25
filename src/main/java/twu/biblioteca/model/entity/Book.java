@@ -19,7 +19,7 @@ public class Book {
 
     public Book(String id, String bookName, String author, String yearPublished, boolean isCheckout) {
         this.data = new HashMap<>();
-        this.setId(id);
+        this.data.put(BOOK_ID_FIELD, id);
         this.setBookName(bookName);
         this.setAuthor(author);
         this.setYearPublished(yearPublished);
@@ -39,9 +39,6 @@ public class Book {
         return (String) this.data.get(BOOK_ID_FIELD);
     }
 
-    public void setId(String id) {
-        this.data.put(BOOK_ID_FIELD, id);
-    }
 
     public String getBookName() {
         return (String) this.data.get(BOOK_NAME_FIELD);

@@ -1,6 +1,7 @@
 package twu.biblioteca.control;
 
 import org.junit.After;
+import twu.biblioteca.model.collection.BookCollection;
 import twu.biblioteca.view.UIThread;
 
 /**
@@ -14,5 +15,6 @@ public abstract class LogicTesing {
     public void tearDown() throws Exception {
         while (ControlThread.getControlThread().getNextEvent() != null);
         while (UIThread.getUiThread().getNextUIEvent() != null);
+        BookCollection.getBookCollection().clear();
     }
 }
