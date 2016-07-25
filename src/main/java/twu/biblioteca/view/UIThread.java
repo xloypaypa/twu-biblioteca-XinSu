@@ -10,7 +10,16 @@ import java.util.concurrent.LinkedBlockingDeque;
  */
 public class UIThread extends Thread {
 
+    private static UIThread uiThread = new UIThread();
+
+    public static UIThread getUiThread() {
+        return uiThread;
+    }
+
     private BlockingQueue<UIEvent> eventBlockingQueue = new LinkedBlockingDeque<>();
+
+    private UIThread() {
+    }
 
     @Override
     public void run() {
