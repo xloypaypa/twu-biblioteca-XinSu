@@ -31,10 +31,17 @@ public class CheckOutLogic implements LogicNode {
     public void getInputMessage(String value) {
         Map<String, Object> filter = new HashMap<>();
         filter.put(Book.BOOK_ID_FIELD, value);
+        filter.put(Book.BOOK_IS_CHECKOUT_FIELD, false);
         List<Book> result = BookCollection.getBookCollection().findData(filter);
         for (Book now : result) {
             now.setISCheckout(true);
             BookCollection.getBookCollection().updateData(now);
+        }
+
+        if (!result.isEmpty()) {
+            UIThread.getUiThread().addEvent(new UIEvent("Thank you! Enjoy the book"));
+        } else {
+            UIThread.getUiThread().addEvent(new UIEvent("That book is not available."));
         }
         ControlThread.getControlThread().addEvent(MainMenuLogic.class);
     }
