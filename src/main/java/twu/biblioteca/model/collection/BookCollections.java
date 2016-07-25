@@ -27,13 +27,7 @@ public class BookCollections {
     public void removeData(Map<String, Object> filter) {
         for (String id : bookMap.keySet()) {
             Book now = bookMap.get(id);
-            boolean isMatch = true;
-            for (String field : filter.keySet()) {
-                if (!now.getData().containsKey(field) || !now.getData().get(field).equals(filter.get(field))) {
-                    isMatch = false;
-                    break;
-                }
-            }
+            boolean isMatch = checkBookIsMatchFilter(filter, now);
             if (isMatch) {
                 this.bookMap.remove(id);
             }
@@ -44,18 +38,23 @@ public class BookCollections {
         List<Book> result = new ArrayList<>();
         for (String id : bookMap.keySet()) {
             Book now = bookMap.get(id);
-            boolean isMatch = true;
-            for (String field : filter.keySet()) {
-                if (!now.getData().containsKey(field) || !now.getData().get(field).equals(filter.get(field))) {
-                    isMatch = false;
-                    break;
-                }
-            }
+            boolean isMatch = checkBookIsMatchFilter(filter, now);
             if (isMatch) {
                 result.add(now);
             }
         }
         return result;
+    }
+
+    private boolean checkBookIsMatchFilter(Map<String, Object> filter, Book now) {
+        boolean isMatch = true;
+        for (String field : filter.keySet()) {
+            if (!now.getData().containsKey(field) || !now.getData().get(field).equals(filter.get(field))) {
+                isMatch = false;
+                break;
+            }
+        }
+        return isMatch;
     }
 
 }
