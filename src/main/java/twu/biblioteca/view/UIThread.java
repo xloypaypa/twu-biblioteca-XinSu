@@ -26,12 +26,16 @@ public class UIThread extends Thread {
         //noinspection InfiniteLoopStatement
         while (true) {
             try {
-                UIEvent uiEvent = eventBlockingQueue.take();
+                UIEvent uiEvent = getNextUIEvent();
                 System.out.println(uiEvent.getMessage());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public UIEvent getNextUIEvent() throws InterruptedException {
+        return eventBlockingQueue.take();
     }
 
     public void addEvent(UIEvent uiEvent) {

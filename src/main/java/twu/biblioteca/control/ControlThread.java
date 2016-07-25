@@ -30,12 +30,16 @@ public class ControlThread extends Thread {
         //noinspection InfiniteLoopStatement
         while (true) {
             try {
-                Class<? extends LogicNode> clazz = eventBlockingQueue.take();
+                Class<? extends LogicNode> clazz = getNextEvent();
                 logicNodeMap.get(clazz).action();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public Class<? extends LogicNode> getNextEvent() throws InterruptedException {
+        return eventBlockingQueue.take();
     }
 
     public void registerLogicNode(LogicNode logicNode) {
