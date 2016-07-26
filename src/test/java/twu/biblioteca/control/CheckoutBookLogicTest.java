@@ -14,20 +14,20 @@ import static org.junit.Assert.*;
  * Created by xsu on 16/7/25.
  * it's the testing code for check out
  */
-public class CheckOutLogicTest extends LogicTesing {
+public class CheckoutBookLogicTest extends LogicTesing {
 
     @Test
     public void should_add_check_out_hint_message() throws Exception {
-        CheckOutLogic checkOutLogic = new CheckOutLogic();
-        checkOutLogic.action();
+        CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
+        checkoutBookLogic.action();
 
         assertEquals("Please input book id.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
 
     @Test
     public void should_back_to_main_menu_after_input() throws Exception {
-        CheckOutLogic checkOutLogic = new CheckOutLogic();
-        checkOutLogic.getInputMessage("1");
+        CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
+        checkoutBookLogic.getInputMessage("1");
 
         assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent());
     }
@@ -39,8 +39,8 @@ public class CheckOutLogicTest extends LogicTesing {
             bookCollection.insertData(new Book(Integer.toString(i), "book-" + i, "author-" + i / 2, "1999" + i / 3, false));
         }
 
-        CheckOutLogic checkOutLogic = new CheckOutLogic();
-        checkOutLogic.getInputMessage("1");
+        CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
+        checkoutBookLogic.getInputMessage("1");
 
         Map<String, Object> filter = new HashMap<>();
         filter.put(Book.BOOK_IS_CHECKOUT_FIELD, true);
@@ -55,8 +55,8 @@ public class CheckOutLogicTest extends LogicTesing {
             bookCollection.insertData(new Book(Integer.toString(i), "book-" + i, "author-" + i / 2, "1999" + i / 3, false));
         }
 
-        CheckOutLogic checkOutLogic = new CheckOutLogic();
-        checkOutLogic.getInputMessage("1");
+        CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
+        checkoutBookLogic.getInputMessage("1");
 
         assertEquals("Thank you! Enjoy the book", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
@@ -68,8 +68,8 @@ public class CheckOutLogicTest extends LogicTesing {
             bookCollection.insertData(new Book(Integer.toString(i), "book-" + i, "author-" + i / 2, "1999" + i / 3, false));
         }
 
-        CheckOutLogic checkOutLogic = new CheckOutLogic();
-        checkOutLogic.getInputMessage("1000");
+        CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
+        checkoutBookLogic.getInputMessage("1000");
 
         assertEquals("That book is not available.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
@@ -81,8 +81,8 @@ public class CheckOutLogicTest extends LogicTesing {
             bookCollection.insertData(new Book(Integer.toString(i), "book-" + i, "author-" + i / 2, "1999" + i / 3, true));
         }
 
-        CheckOutLogic checkOutLogic = new CheckOutLogic();
-        checkOutLogic.getInputMessage("1");
+        CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
+        checkoutBookLogic.getInputMessage("1");
 
         assertEquals("That book is not available.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }

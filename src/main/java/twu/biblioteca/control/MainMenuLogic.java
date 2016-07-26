@@ -30,7 +30,7 @@ public class MainMenuLogic implements LogicNode {
         } else if (value == 2) {
             ControlThread.getControlThread().addEvent(ListMoviesLogic.class);
         } else if (value == 3) {
-            ControlThread.getControlThread().addEvent(CheckOutLogic.class);
+            ControlThread.getControlThread().addEvent(CheckoutBookLogic.class);
         } else if (value == 4) {
             ControlThread.getControlThread().addEvent(ReturnLogic.class);
         } else if (value == 0) {

@@ -17,7 +17,7 @@ public class BibliotecaApp {
         controlThread.registerLogicNode(new MainMenuLogic());
         controlThread.registerLogicNode(new ListBooksLogic());
         controlThread.registerLogicNode(new ListMoviesLogic());
-        controlThread.registerLogicNode(new CheckOutLogic());
+        controlThread.registerLogicNode(new CheckoutBookLogic());
         controlThread.registerLogicNode(new ReturnLogic());
         controlThread.registerLogicNode(new ExitLogic());
         controlThread.addEvent(WelcomeLogic.class);

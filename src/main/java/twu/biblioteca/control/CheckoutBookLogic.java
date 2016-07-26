@@ -16,7 +16,7 @@ import java.util.Scanner;
  * Created by xsu on 16/7/25.
  * it's the logic to check out book
  */
-public class CheckOutLogic implements LogicNode {
+public class CheckoutBookLogic implements LogicNode {
     @Override
     public void action() throws Exception {
         UIThread.getUiThread().addEvent(new UIEvent("Please input book id.", new UIEventCallBack() {

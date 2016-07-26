@@ -52,7 +52,7 @@ public class MainMenuLogicTest extends LogicTesing {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(3);
 
-        assertEquals(CheckOutLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(CheckoutBookLogic.class, ControlThread.getControlThread().getNextEvent());
     }
 
     @Test
