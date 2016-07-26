@@ -13,7 +13,8 @@ import java.util.Scanner;
 public class MainMenuLogic implements LogicNode {
     @Override
     public void action() throws Exception {
-        UIThread.getUiThread().addEvent(new UIEvent("Please select one command\r\n1.list books; 2.list movies; 3.check out book; 4.return book; 0.exit",
+        UIThread.getUiThread().addEvent(new UIEvent("Please select one command\r\n" +
+                "1.list books; 2.list movies; 3.check out book; 4.check out movie; 5.return book; 0.exit",
                 new UIEventCallBack() {
             @Override
             public void action() {
@@ -32,6 +33,8 @@ public class MainMenuLogic implements LogicNode {
         } else if (value == 3) {
             ControlThread.getControlThread().addEvent(CheckoutBookLogic.class);
         } else if (value == 4) {
+            ControlThread.getControlThread().addEvent(CheckoutMovieLogic.class);
+        } else if (value == 5) {
             ControlThread.getControlThread().addEvent(ReturnLogic.class);
         } else if (value == 0) {
             ControlThread.getControlThread().addEvent(ExitLogic.class);
