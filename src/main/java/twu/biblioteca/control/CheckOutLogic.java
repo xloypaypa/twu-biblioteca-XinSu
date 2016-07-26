@@ -2,6 +2,7 @@ package twu.biblioteca.control;
 
 import twu.biblioteca.model.collection.BookCollection;
 import twu.biblioteca.model.entity.Book;
+import twu.biblioteca.model.entity.Entity;
 import twu.biblioteca.view.UIEvent;
 import twu.biblioteca.view.UIEventCallBack;
 import twu.biblioteca.view.UIThread;
@@ -30,7 +31,7 @@ public class CheckOutLogic implements LogicNode {
 
     public void getInputMessage(String value) {
         Map<String, Object> filter = new HashMap<>();
-        filter.put(Book.BOOK_ID_FIELD, value);
+        filter.put(Entity.ENTITY_ID_FIELD, value);
         filter.put(Book.BOOK_IS_CHECKOUT_FIELD, false);
         List<Book> result = BookCollection.getBookCollection().findData(filter);
         for (Book now : result) {

@@ -3,6 +3,7 @@ package twu.biblioteca.model.collection;
 import org.junit.Before;
 import org.junit.Test;
 import twu.biblioteca.model.entity.Book;
+import twu.biblioteca.model.entity.Entity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +54,7 @@ public class BookCollectionTest {
         this.bookCollection.updateData(after);
 
         Map<String, Object> filter = new HashMap<>();
-        filter.put(Book.BOOK_ID_FIELD, "1");
+        filter.put(Entity.ENTITY_ID_FIELD, "1");
         assertEquals("b2", this.bookCollection.findData(filter).get(0).getBookName());
     }
 
