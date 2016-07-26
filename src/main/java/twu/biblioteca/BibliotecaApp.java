@@ -2,7 +2,9 @@ package twu.biblioteca;
 
 import twu.biblioteca.control.*;
 import twu.biblioteca.model.collection.BookCollection;
+import twu.biblioteca.model.collection.MovieCollection;
 import twu.biblioteca.model.entity.Book;
+import twu.biblioteca.model.entity.Movie;
 import twu.biblioteca.view.UIThread;
 
 public class BibliotecaApp {
@@ -31,6 +33,11 @@ public class BibliotecaApp {
         BookCollection bookCollection = BookCollection.getBookCollection();
         for (int i = 0; i < 10; i++) {
             bookCollection.insertData(new Book(Integer.toString(i), "book-" + i, "author-1", "1999", false));
+        }
+
+        MovieCollection movieCollection = MovieCollection.getMovieCollection();
+        for (int i = 0; i < 10; i++) {
+            movieCollection.insertData(new Movie(Integer.toString(i), "movie-" + i, "1999", "director-" + i / 2, 1, false));
         }
     }
 }

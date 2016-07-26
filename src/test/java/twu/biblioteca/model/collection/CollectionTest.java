@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  * Created by xsu on 16/7/25.
  * it's the testing code for book collection
  */
-public class BookCollectionTest {
+public class CollectionTest {
 
     private BookCollection bookCollection;
 
