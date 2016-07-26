@@ -14,7 +14,7 @@ import java.util.Map;
 public abstract class Collection<T extends Entity> {
     private Map<String, T> dataMap;
 
-    public Collection() {
+    Collection() {
         this.dataMap = new HashMap<>();
     }
 
