@@ -17,6 +17,7 @@ public class BibliotecaApp {
 
         ControlThread controlThread = ControlThread.getControlThread();
         controlThread.registerLogicNode(new WelcomeLogic());
+        controlThread.registerLogicNode(new LoginLogic());
         controlThread.registerLogicNode(new MainMenuLogic());
         controlThread.registerLogicNode(new ListBooksLogic());
         controlThread.registerLogicNode(new ListMoviesLogic());
@@ -24,7 +25,8 @@ public class BibliotecaApp {
         controlThread.registerLogicNode(new CheckoutMovieLogic());
         controlThread.registerLogicNode(new ReturnLogic());
         controlThread.registerLogicNode(new ExitLogic());
-        controlThread.addEvent(WelcomeLogic.class);
+
+        controlThread.addEvent(LoginLogic.class);
 
         startThread();
     }

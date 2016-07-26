@@ -22,11 +22,11 @@ public class WelcomeLogicTest extends LogicTesing {
     }
 
     @Test
-    public void should_add_main_menu_to_control_logic() throws Exception {
+    public void should_add_login_to_control_logic() throws Exception {
         WelcomeLogic welcomeLogic = new WelcomeLogic();
         welcomeLogic.action();
 
         Class<? extends LogicNode> clazz = ControlThread.getControlThread().getNextEvent();
-        assertEquals(MainMenuLogic.class, clazz);
+        assertEquals(LoginLogic.class, clazz);
     }
 }
