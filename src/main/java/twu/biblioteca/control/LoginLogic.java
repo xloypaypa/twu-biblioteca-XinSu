@@ -17,26 +17,26 @@ import java.util.Scanner;
  */
 public class LoginLogic implements LogicNode {
     @Override
-    public void action(Object param) throws Exception {
+    public void action(final Object param) throws Exception {
         UIThread.getUiThread().addEvent(new UIEvent("input your username and password", new UIEventCallBack() {
             @Override
             public void action() {
                 Scanner scanner = new Scanner(System.in);
                 String username = scanner.nextLine();
                 String password = scanner.nextLine();
-                getInputMessage(username, password);
+                getInputMessage(username, password, param);
             }
         }));
     }
 
-    public void getInputMessage(String username, String password) {
+    public void getInputMessage(String username, String password, Object param) {
         Map<String, Object> filter = new HashMap<>();
         filter.put(UserEntity.ENTITY_ID_FIELD, username);
         filter.put(UserEntity.USER_PASSWORD_FIELD, password);
         List<UserEntity> users = UserCollection.getUserCollection().findData(filter);
         if (!users.isEmpty()) {
             UIThread.getUiThread().addEvent(new UIEvent("login ok"));
-            ControlThread.getControlThread().addEvent(MainMenuLogic.class);
+            ControlThread.getControlThread().addEvent((Class<? extends LogicNode>) param);
         } else {
             UIThread.getUiThread().addEvent(new UIEvent("login fail"));
             ControlThread.getControlThread().addEvent(LoginLogic.class);

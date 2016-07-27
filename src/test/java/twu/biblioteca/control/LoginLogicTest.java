@@ -38,7 +38,7 @@ public class LoginLogicTest extends LogicTesing {
         UserCollection.getUserCollection().insertData(new UserEntity("000-0000", "p"));
 
         LoginLogic loginLogic = new LoginLogic();
-        loginLogic.getInputMessage("000-0000", "p");
+        loginLogic.getInputMessage("000-0000", "p", MainMenuLogic.class);
 
         assertEquals("login ok", UIThread.getUiThread().getNextUIEvent().getMessage());
         assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
@@ -49,7 +49,7 @@ public class LoginLogicTest extends LogicTesing {
         UserCollection.getUserCollection().insertData(new UserEntity("000-0000", "p"));
 
         LoginLogic loginLogic = new LoginLogic();
-        loginLogic.getInputMessage("000-0000", "e");
+        loginLogic.getInputMessage("000-0000", "e", MainMenuLogic.class);
 
         assertEquals("login fail", UIThread.getUiThread().getNextUIEvent().getMessage());
         assertEquals(LoginLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
