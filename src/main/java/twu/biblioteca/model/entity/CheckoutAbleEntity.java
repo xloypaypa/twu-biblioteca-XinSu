@@ -6,6 +6,7 @@ package twu.biblioteca.model.entity;
  */
 public abstract class CheckoutAbleEntity extends Entity {
     public static final String IS_CHECKOUT_FIELD = "isCheckout";
+    public static final String CHECKOUT_USER_FIELD = "checkUser";
 
     CheckoutAbleEntity(String id, boolean isCheckout) {
         super(id);
@@ -19,4 +20,23 @@ public abstract class CheckoutAbleEntity extends Entity {
     public void setISCheckout(boolean isCheckout) {
         this.getData().put(IS_CHECKOUT_FIELD, isCheckout);
     }
+
+    public UserEntity getUserWhoCheckoutThis() {
+        return (UserEntity) this.getData().get(CHECKOUT_USER_FIELD);
+    }
+
+    private void setCheckoutUser(UserEntity userEntity) {
+        this.getData().put(CHECKOUT_USER_FIELD, userEntity);
+    }
+
+    public void checkout(UserEntity userEntity) {
+        setISCheckout(true);
+        setCheckoutUser(userEntity);
+    }
+
+    public void returnEntity() {
+        setISCheckout(false);
+        setCheckoutUser(null);
+    }
+
 }
