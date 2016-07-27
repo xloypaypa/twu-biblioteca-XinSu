@@ -4,23 +4,21 @@ package twu.biblioteca.model.entity;
  * Created by xsu on 16/7/26.
  * it's the movie entity
  */
-public class Movie extends Entity {
+public class Movie extends CheckoutAbleEntity {
 
     public static final String MOVIE_NAME_FIELD = "movieName";
     public static final String MOVIE_YEAR_PUBLISHED_FIELD = "year";
     public static final String MOVIE_DIRECTOR_FIELD = "director";
     public static final String MOVIE_RATE_FIELD = "rate";
-    public static final String MOVIE_IS_CHECKOUT_FIELD = "isCheckout";
 
     public static final int MOVIE_UNRATED = -1;
 
     public Movie(String id, String name, String year, String director, int rate, boolean isCheckout) {
-        super(id);
+        super(id, isCheckout);
         this.setMovieName(name);
         this.setYear(year);
         this.setDirector(director);
         this.setRate(rate);
-        this.setISCheckout(isCheckout);
     }
 
     @Override
@@ -59,14 +57,6 @@ public class Movie extends Entity {
 
     public void setRate(int rate) {
         this.getData().put(MOVIE_RATE_FIELD, rate);
-    }
-
-    public boolean isCheckout() {
-        return (boolean) this.getData().get(MOVIE_IS_CHECKOUT_FIELD);
-    }
-
-    public void setISCheckout(boolean isCheckout) {
-        this.getData().put(MOVIE_IS_CHECKOUT_FIELD, isCheckout);
     }
 
 }

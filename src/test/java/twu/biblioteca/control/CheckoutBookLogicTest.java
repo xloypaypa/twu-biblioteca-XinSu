@@ -3,6 +3,7 @@ package twu.biblioteca.control;
 import org.junit.Test;
 import twu.biblioteca.model.collection.BookCollection;
 import twu.biblioteca.model.entity.Book;
+import twu.biblioteca.model.entity.CheckoutAbleEntity;
 import twu.biblioteca.view.UIThread;
 
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class CheckoutBookLogicTest extends LogicTesing {
         checkoutBookLogic.getInputMessage("1");
 
         Map<String, Object> filter = new HashMap<>();
-        filter.put(Book.BOOK_IS_CHECKOUT_FIELD, true);
+        filter.put(CheckoutAbleEntity.IS_CHECKOUT_FIELD, true);
         assertEquals(1, bookCollection.findData(filter).size());
         assertEquals("book-1", bookCollection.findData(filter).get(0).getBookName());
     }

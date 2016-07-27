@@ -32,7 +32,7 @@ public class CheckoutMovieLogic implements LogicNode {
     public void getInputMessage(String value) {
         Map<String, Object> filter = new HashMap<>();
         filter.put(Entity.ENTITY_ID_FIELD, value);
-        filter.put(Movie.MOVIE_IS_CHECKOUT_FIELD, false);
+        filter.put(Movie.IS_CHECKOUT_FIELD, false);
         List<Movie> result = MovieCollection.getMovieCollection().findData(filter);
         for (Movie now : result) {
             now.setISCheckout(true);

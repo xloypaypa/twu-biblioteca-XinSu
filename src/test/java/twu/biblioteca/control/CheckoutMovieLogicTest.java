@@ -43,7 +43,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
         checkoutMovieLogic.getInputMessage("1");
 
         Map<String, Object> filter = new HashMap<>();
-        filter.put(Movie.MOVIE_IS_CHECKOUT_FIELD, true);
+        filter.put(Movie.IS_CHECKOUT_FIELD, true);
         assertEquals(1, movieCollection.findData(filter).size());
         assertEquals("movie-1", movieCollection.findData(filter).get(0).getMovieName());
     }
