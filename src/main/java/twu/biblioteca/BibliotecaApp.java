@@ -24,6 +24,7 @@ public class BibliotecaApp {
         controlThread.registerLogicNode(new CheckoutBookLogic());
         controlThread.registerLogicNode(new CheckoutMovieLogic());
         controlThread.registerLogicNode(new ReturnLogic());
+        controlThread.registerLogicNode(new ShowUserInfoLogic());
         controlThread.registerLogicNode(new ExitLogic());
 
         controlThread.addEvent(WelcomeLogic.class);
@@ -49,7 +50,8 @@ public class BibliotecaApp {
 
         UserCollection userCollection = UserCollection.getUserCollection();
         for (int i = 0; i < 3; i++) {
-            userCollection.insertData(new UserEntity(StringFormatter.format("%d%d%d-%d%d%d%d", i, i, i, i, i, i, i).getValue(), "p" + i));
+            userCollection.insertData(new UserEntity(StringFormatter.format("%d%d%d-%d%d%d%d", i, i, i, i, i, i, i).getValue(), "p" + i,
+                    "name-" + i, "email-" + i, "phone-" + i));
         }
     }
 }

@@ -14,7 +14,7 @@ public class CheckoutAbleEntityTest extends LogicTesing {
     @Test
     public void should_mark_checkout_and_remember_user_entity_when_checkout() throws Exception {
         Book book = new Book("i", "n", "a", "1", false);
-        UserEntity userEntity = new UserEntity("000-1111", "p");
+        UserEntity userEntity = new UserEntity("000-1111", "p", "n", "e", "ph");
 
         book.checkout(userEntity);
 
@@ -25,7 +25,7 @@ public class CheckoutAbleEntityTest extends LogicTesing {
     @Test
     public void should_mark_not_checkout_and_remove_user_entity_when_checkout() throws Exception {
         Book book = new Book("i", "n", "a", "1", false);
-        UserEntity userEntity = new UserEntity("000-1111", "p");
+        UserEntity userEntity = new UserEntity("000-1111", "p", "n", "e", "ph");
 
         book.checkout(userEntity);
         book.returnEntity();

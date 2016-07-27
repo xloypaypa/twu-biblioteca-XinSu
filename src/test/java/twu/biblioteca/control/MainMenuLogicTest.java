@@ -18,7 +18,8 @@ public class MainMenuLogicTest extends LogicTesing {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.action(null);
 
-        assertEquals("Please select one command\r\n1.list books; 2.list movies; 3.check out book; 4.check out movie; 5.return book; 0.exit",
+        assertEquals("Please select one command\r\n" +
+                        "1.list books; 2.list movies; 3.check out book; 4.check out movie; 5.return book; 6.show user message; 0.exit",
                 UIThread.getUiThread().getNextUIEvent().getMessage());
     }
 
@@ -76,6 +77,16 @@ public class MainMenuLogicTest extends LogicTesing {
         Pair<Class<? extends LogicNode>, Object> nextEvent = ControlThread.getControlThread().getNextEvent();
         assertEquals(LoginLogic.class, nextEvent.getKey());
         assertEquals(ReturnLogic.class, nextEvent.getValue());
+    }
+
+    @Test
+    public void should_add_login_event_with_show_user_info_event_when_input_6() throws Exception {
+        MainMenuLogic mainMenuLogic = new MainMenuLogic();
+        mainMenuLogic.getInputMessage(6);
+
+        Pair<Class<? extends LogicNode>, Object> nextEvent = ControlThread.getControlThread().getNextEvent();
+        assertEquals(LoginLogic.class, nextEvent.getKey());
+        assertEquals(ShowUserInfoLogic.class, nextEvent.getValue());
     }
 
     @Test

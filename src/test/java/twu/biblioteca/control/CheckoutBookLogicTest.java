@@ -29,7 +29,7 @@ public class CheckoutBookLogicTest extends LogicTesing {
     @Test
     public void should_back_to_main_menu_after_input() throws Exception {
         CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
-        checkoutBookLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
+        checkoutBookLogic.getInputMessage("1", new UserEntity("000-1111", "p", "n", "e", "ph"));
 
         assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
@@ -42,7 +42,7 @@ public class CheckoutBookLogicTest extends LogicTesing {
         }
 
         CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
-        checkoutBookLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
+        checkoutBookLogic.getInputMessage("1", new UserEntity("000-1111", "p", "n", "e", "ph"));
 
         Map<String, Object> filter = new HashMap<>();
         filter.put(CheckoutAbleEntity.IS_CHECKOUT_FIELD, true);
@@ -58,7 +58,7 @@ public class CheckoutBookLogicTest extends LogicTesing {
         }
 
         CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
-        checkoutBookLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
+        checkoutBookLogic.getInputMessage("1", new UserEntity("000-1111", "p", "n", "e", "ph"));
 
         assertEquals("Thank you! Enjoy the book", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
@@ -71,7 +71,7 @@ public class CheckoutBookLogicTest extends LogicTesing {
         }
 
         CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
-        checkoutBookLogic.getInputMessage("1000", new UserEntity("000-1111", "p"));
+        checkoutBookLogic.getInputMessage("1000", new UserEntity("000-1111", "p", "n", "e", "ph"));
 
         assertEquals("That book is not available.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
@@ -84,7 +84,7 @@ public class CheckoutBookLogicTest extends LogicTesing {
         }
 
         CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
-        checkoutBookLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
+        checkoutBookLogic.getInputMessage("1", new UserEntity("000-1111", "p", "n", "e", "ph"));
 
         assertEquals("That book is not available.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }

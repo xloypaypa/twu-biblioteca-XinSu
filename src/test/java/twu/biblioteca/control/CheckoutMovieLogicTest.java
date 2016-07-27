@@ -28,7 +28,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
     @Test
     public void should_back_to_main_menu_after_input() throws Exception {
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
-        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
+        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p", "n", "e", "ph"));
 
         assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
@@ -41,7 +41,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
         }
 
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
-        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
+        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p", "n", "e", "ph"));
 
         Map<String, Object> filter = new HashMap<>();
         filter.put(Movie.IS_CHECKOUT_FIELD, true);
@@ -57,7 +57,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
         }
 
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
-        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
+        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p", "n", "e", "ph"));
 
         assertEquals("Thank you! Enjoy the movie", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
@@ -70,7 +70,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
         }
 
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
-        checkoutMovieLogic.getInputMessage("1000", new UserEntity("000-1111", "p"));
+        checkoutMovieLogic.getInputMessage("1000", new UserEntity("000-1111", "p", "n", "e", "ph"));
 
         assertEquals("That movie is not available.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
@@ -83,7 +83,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
         }
 
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
-        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
+        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p", "n", "e", "ph"));
 
         assertEquals("That movie is not available.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }

@@ -36,7 +36,7 @@ public class LoginLogicTest extends LogicTesing {
 
     @Test
     public void should_show_success_message_and_go_to_main_logic_with_user_entity_when_success() throws Exception {
-        UserCollection.getUserCollection().insertData(new UserEntity("000-0000", "p"));
+        UserCollection.getUserCollection().insertData(new UserEntity("000-0000", "p", "n", "e", "ph"));
 
         LoginLogic loginLogic = new LoginLogic();
         loginLogic.getInputMessage("000-0000", "p", MainMenuLogic.class);
@@ -49,7 +49,7 @@ public class LoginLogicTest extends LogicTesing {
 
     @Test
     public void should_show_fail_message_and_go_to_login_logic_when_success() throws Exception {
-        UserCollection.getUserCollection().insertData(new UserEntity("000-0000", "p"));
+        UserCollection.getUserCollection().insertData(new UserEntity("000-0000", "p", "n", "e", "ph"));
 
         LoginLogic loginLogic = new LoginLogic();
         loginLogic.getInputMessage("000-0000", "e", MainMenuLogic.class);

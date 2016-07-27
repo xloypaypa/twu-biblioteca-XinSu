@@ -14,7 +14,7 @@ public class MainMenuLogic implements LogicNode {
     @Override
     public void action(Object param) throws Exception {
         UIThread.getUiThread().addEvent(new UIEvent("Please select one command\r\n" +
-                "1.list books; 2.list movies; 3.check out book; 4.check out movie; 5.return book; 0.exit",
+                "1.list books; 2.list movies; 3.check out book; 4.check out movie; 5.return book; 6.show user message; 0.exit",
                 new UIEventCallBack() {
             @Override
             public void action() {
@@ -36,6 +36,8 @@ public class MainMenuLogic implements LogicNode {
             ControlThread.getControlThread().addEvent(LoginLogic.class, CheckoutMovieLogic.class);
         } else if (value == 5) {
             ControlThread.getControlThread().addEvent(LoginLogic.class, ReturnLogic.class);
+        } else if (value == 6) {
+            ControlThread.getControlThread().addEvent(LoginLogic.class, ShowUserInfoLogic.class);
         } else if (value == 0) {
             ControlThread.getControlThread().addEvent(ExitLogic.class);
         } else {
