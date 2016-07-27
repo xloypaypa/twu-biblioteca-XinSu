@@ -22,7 +22,7 @@ public class ControlThread extends Thread {
     }
 
     private Map<Class<? extends LogicNode>, LogicNode> logicNodeMap;
-    private BlockingQueue<Pair<Class<? extends LogicNode>, String>> eventBlockingQueue = new LinkedBlockingDeque<>();
+    private BlockingQueue<Pair<Class<? extends LogicNode>, Object>> eventBlockingQueue = new LinkedBlockingDeque<>();
 
     private ControlThread() {
         this.logicNodeMap = new ConcurrentHashMap<>();
@@ -33,7 +33,7 @@ public class ControlThread extends Thread {
         //noinspection InfiniteLoopStatement
         while (true) {
             try {
-                Pair<Class<? extends LogicNode>, String> nextEvent = getNextEvent();
+                Pair<Class<? extends LogicNode>, Object> nextEvent = getNextEvent();
                 if (nextEvent != null) {
                     Class<? extends LogicNode> clazz = nextEvent.getKey();
                     logicNodeMap.get(clazz).action(nextEvent.getValue());
@@ -44,7 +44,7 @@ public class ControlThread extends Thread {
         }
     }
 
-    public Pair<Class<? extends LogicNode>, String> getNextEvent() throws InterruptedException {
+    public Pair<Class<? extends LogicNode>, Object> getNextEvent() throws InterruptedException {
         return eventBlockingQueue.poll(20L, TimeUnit.MICROSECONDS);
     }
 
@@ -53,7 +53,11 @@ public class ControlThread extends Thread {
     }
 
     public void addEvent(Class<? extends LogicNode> clazz) {
-        eventBlockingQueue.add(new Pair<Class<? extends LogicNode>, String>(clazz, null));
+        addEvent(clazz, null);
+    }
+
+    public void addEvent(Class<? extends LogicNode> clazz, Object param) {
+        eventBlockingQueue.add(new Pair<Class<? extends LogicNode>, Object>(clazz, param));
     }
 
 }

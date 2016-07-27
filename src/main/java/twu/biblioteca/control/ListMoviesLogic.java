@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ListMoviesLogic implements LogicNode {
     @Override
-    public void action(String param) throws Exception {
+    public void action(Object param) throws Exception {
         HashMap<String, Object> filter = new HashMap<>();
         filter.put(Movie.MOVIE_IS_CHECKOUT_FIELD, false);
         List<Movie> movies = MovieCollection.getMovieCollection().findData(filter);

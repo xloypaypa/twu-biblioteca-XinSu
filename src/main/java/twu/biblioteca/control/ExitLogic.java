@@ -6,7 +6,7 @@ package twu.biblioteca.control;
  */
 public class ExitLogic implements LogicNode {
     @Override
-    public void action(String param) throws Exception {
+    public void action(Object param) throws Exception {
         System.exit(0);
     }
 }

@@ -1,5 +1,6 @@
 package twu.biblioteca.control;
 
+import javafx.util.Pair;
 import org.junit.Test;
 import twu.biblioteca.view.UIEvent;
 import twu.biblioteca.view.UIThread;
@@ -48,27 +49,33 @@ public class MainMenuLogicTest extends LogicTesing {
     }
 
     @Test
-    public void should_add_check_out_books_event_when_input_3() throws Exception {
+    public void should_add_check_out_books_event_with_check_out_book_param_when_input_3() throws Exception {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(3);
 
-        assertEquals(CheckoutBookLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
+        Pair<Class<? extends LogicNode>, Object> nextEvent = ControlThread.getControlThread().getNextEvent();
+        assertEquals(LoginLogic.class, nextEvent.getKey());
+        assertEquals(CheckoutBookLogic.class, nextEvent.getValue());
     }
 
     @Test
-    public void should_add_check_out_movies_event_when_input_4() throws Exception {
+    public void should_add_check_out_movies_event_with_check_out_movie_when_input_4() throws Exception {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(4);
 
-        assertEquals(CheckoutMovieLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
+        Pair<Class<? extends LogicNode>, Object> nextEvent = ControlThread.getControlThread().getNextEvent();
+        assertEquals(LoginLogic.class, nextEvent.getKey());
+        assertEquals(CheckoutMovieLogic.class, nextEvent.getValue());
     }
 
     @Test
-    public void should_add_return_books_event_when_input_5() throws Exception {
+    public void should_add_return_books_event_with_return_book_event_when_input_5() throws Exception {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(5);
 
-        assertEquals(ReturnLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
+        Pair<Class<? extends LogicNode>, Object> nextEvent = ControlThread.getControlThread().getNextEvent();
+        assertEquals(LoginLogic.class, nextEvent.getKey());
+        assertEquals(ReturnLogic.class, nextEvent.getValue());
     }
 
     @Test

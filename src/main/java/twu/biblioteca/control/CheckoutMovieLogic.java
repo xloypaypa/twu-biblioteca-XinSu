@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 public class CheckoutMovieLogic implements LogicNode {
     @Override
-    public void action(String param) throws Exception {
+    public void action(Object param) throws Exception {
         UIThread.getUiThread().addEvent(new UIEvent("Please input movie id.", new UIEventCallBack() {
             @Override
             public void action() {

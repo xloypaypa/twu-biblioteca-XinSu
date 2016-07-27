@@ -6,6 +6,6 @@ package twu.biblioteca.control;
  */
 public interface LogicNode {
 
-    void action(String param) throws Exception;
+    void action(Object param) throws Exception;
 
 }
