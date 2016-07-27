@@ -28,9 +28,9 @@ public class ListBooksLogicTest extends LogicTesing {
     @Test
     public void should_back_to_main_menu() throws Exception {
         ListBooksLogic listBooksLogic = new ListBooksLogic();
-        listBooksLogic.action();
+        listBooksLogic.action(null);
 
-        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class ListBooksLogicTest extends LogicTesing {
         }
 
         ListBooksLogic listBooksLogic = new ListBooksLogic();
-        listBooksLogic.action();
+        listBooksLogic.action(null);
 
         UIEvent uiEvent = UIThread.getUiThread().getNextUIEvent();
 
@@ -56,7 +56,7 @@ public class ListBooksLogicTest extends LogicTesing {
     @Test
     public void should_show_all_books_in_book_collection_in_one_ui_event() throws Exception {
         ListBooksLogic listBooksLogic = new ListBooksLogic();
-        listBooksLogic.action();
+        listBooksLogic.action(null);
 
         UIEvent uiEvent = UIThread.getUiThread().getNextUIEvent();
 

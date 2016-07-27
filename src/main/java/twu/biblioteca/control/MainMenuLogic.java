@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class MainMenuLogic implements LogicNode {
     @Override
-    public void action() throws Exception {
+    public void action(String param) throws Exception {
         UIThread.getUiThread().addEvent(new UIEvent("Please select one command\r\n" +
                 "1.list books; 2.list movies; 3.check out book; 4.check out movie; 5.return book; 0.exit",
                 new UIEventCallBack() {

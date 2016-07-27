@@ -19,7 +19,7 @@ public class ReturnLogicTest extends LogicTesing {
     @Test
     public void should_add_return_book_hint_message() throws Exception {
         ReturnLogic returnLogic = new ReturnLogic();
-        returnLogic.action();
+        returnLogic.action(null);
 
         assertEquals("Please input book id.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
@@ -29,7 +29,7 @@ public class ReturnLogicTest extends LogicTesing {
         ReturnLogic returnLogic = new ReturnLogic();
         returnLogic.getInputMessage("1");
 
-        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
     @Test

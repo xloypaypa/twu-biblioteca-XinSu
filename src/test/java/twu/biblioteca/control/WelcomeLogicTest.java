@@ -15,7 +15,7 @@ public class WelcomeLogicTest extends LogicTesing {
     @Test
     public void should_add_welcome_message_to_ui() throws Exception {
         WelcomeLogic welcomeLogic = new WelcomeLogic();
-        welcomeLogic.action();
+        welcomeLogic.action(null);
 
         UIEvent uiEvent = UIThread.getUiThread().getNextUIEvent();
         assertEquals("this is welcome message :p", uiEvent.getMessage());
@@ -24,9 +24,9 @@ public class WelcomeLogicTest extends LogicTesing {
     @Test
     public void should_add_login_to_control_logic() throws Exception {
         WelcomeLogic welcomeLogic = new WelcomeLogic();
-        welcomeLogic.action();
+        welcomeLogic.action(null);
 
-        Class<? extends LogicNode> clazz = ControlThread.getControlThread().getNextEvent();
+        Class<? extends LogicNode> clazz = ControlThread.getControlThread().getNextEvent().getKey();
         assertEquals(LoginLogic.class, clazz);
     }
 }

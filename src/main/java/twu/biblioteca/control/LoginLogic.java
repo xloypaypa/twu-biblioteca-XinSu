@@ -17,7 +17,7 @@ import java.util.Scanner;
  */
 public class LoginLogic implements LogicNode {
     @Override
-    public void action() throws Exception {
+    public void action(String param) throws Exception {
         UIThread.getUiThread().addEvent(new UIEvent("input your username and password", new UIEventCallBack() {
             @Override
             public void action() {

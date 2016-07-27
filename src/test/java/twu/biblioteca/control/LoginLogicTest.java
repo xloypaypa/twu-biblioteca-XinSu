@@ -17,7 +17,7 @@ public class LoginLogicTest extends LogicTesing {
     @Test
     public void should_add_login_hint_message() throws Exception {
         LoginLogic loginLogic = new LoginLogic();
-        loginLogic.action();
+        loginLogic.action(null);
 
         assertEquals("input your username and password",
                 UIThread.getUiThread().getNextUIEvent().getMessage());
@@ -26,7 +26,7 @@ public class LoginLogicTest extends LogicTesing {
     @Test
     public void should_have_input_call_back() throws Exception {
         LoginLogic loginLogic = new LoginLogic();
-        loginLogic.action();
+        loginLogic.action(null);
 
         UIEvent uiEvent = UIThread.getUiThread().getNextUIEvent();
 
@@ -41,7 +41,7 @@ public class LoginLogicTest extends LogicTesing {
         loginLogic.getInputMessage("000-0000", "p");
 
         assertEquals("login ok", UIThread.getUiThread().getNextUIEvent().getMessage());
-        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
     @Test
@@ -52,7 +52,7 @@ public class LoginLogicTest extends LogicTesing {
         loginLogic.getInputMessage("000-0000", "e");
 
         assertEquals("login fail", UIThread.getUiThread().getNextUIEvent().getMessage());
-        assertEquals(LoginLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(LoginLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
 }

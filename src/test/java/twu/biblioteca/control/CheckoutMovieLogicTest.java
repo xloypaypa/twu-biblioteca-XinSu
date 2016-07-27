@@ -19,7 +19,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
     @Test
     public void should_add_check_out_hint_message() throws Exception {
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
-        checkoutMovieLogic.action();
+        checkoutMovieLogic.action(null);
 
         assertEquals("Please input movie id.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
@@ -29,7 +29,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
         checkoutMovieLogic.getInputMessage("1");
 
-        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
     @Test

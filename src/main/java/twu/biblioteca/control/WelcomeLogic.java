@@ -9,7 +9,7 @@ import twu.biblioteca.view.UIThread;
  */
 public class WelcomeLogic implements LogicNode {
     @Override
-    public void action() throws Exception {
+    public void action(String param) throws Exception {
         UIThread.getUiThread().addEvent(new UIEvent("this is welcome message :p"));
         ControlThread.getControlThread().addEvent(LoginLogic.class);
     }

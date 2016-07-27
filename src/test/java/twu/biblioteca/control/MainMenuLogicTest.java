@@ -15,7 +15,7 @@ public class MainMenuLogicTest extends LogicTesing {
     @Test
     public void should_add_main_menu_hint_message() throws Exception {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
-        mainMenuLogic.action();
+        mainMenuLogic.action(null);
 
         assertEquals("Please select one command\r\n1.list books; 2.list movies; 3.check out book; 4.check out movie; 5.return book; 0.exit",
                 UIThread.getUiThread().getNextUIEvent().getMessage());
@@ -24,7 +24,7 @@ public class MainMenuLogicTest extends LogicTesing {
     @Test
     public void should_have_input_call_back() throws Exception {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
-        mainMenuLogic.action();
+        mainMenuLogic.action(null);
 
         UIEvent uiEvent = UIThread.getUiThread().getNextUIEvent();
 
@@ -36,7 +36,7 @@ public class MainMenuLogicTest extends LogicTesing {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(1);
 
-        assertEquals(ListBooksLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(ListBooksLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
     @Test
@@ -44,7 +44,7 @@ public class MainMenuLogicTest extends LogicTesing {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(2);
 
-        assertEquals(ListMoviesLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(ListMoviesLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
     @Test
@@ -52,7 +52,7 @@ public class MainMenuLogicTest extends LogicTesing {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(3);
 
-        assertEquals(CheckoutBookLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(CheckoutBookLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class MainMenuLogicTest extends LogicTesing {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(4);
 
-        assertEquals(CheckoutMovieLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(CheckoutMovieLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
     @Test
@@ -68,7 +68,7 @@ public class MainMenuLogicTest extends LogicTesing {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(5);
 
-        assertEquals(ReturnLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(ReturnLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class MainMenuLogicTest extends LogicTesing {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(0);
 
-        assertEquals(ExitLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(ExitLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class MainMenuLogicTest extends LogicTesing {
         MainMenuLogic mainMenuLogic = new MainMenuLogic();
         mainMenuLogic.getInputMessage(100);
 
-        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
         assertEquals("Select a valid option!", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
 

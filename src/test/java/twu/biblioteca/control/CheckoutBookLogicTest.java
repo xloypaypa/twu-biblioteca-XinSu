@@ -19,7 +19,7 @@ public class CheckoutBookLogicTest extends LogicTesing {
     @Test
     public void should_add_check_out_hint_message() throws Exception {
         CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
-        checkoutBookLogic.action();
+        checkoutBookLogic.action(null);
 
         assertEquals("Please input book id.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
@@ -29,7 +29,7 @@ public class CheckoutBookLogicTest extends LogicTesing {
         CheckoutBookLogic checkoutBookLogic = new CheckoutBookLogic();
         checkoutBookLogic.getInputMessage("1");
 
-        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent());
+        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
 
     @Test

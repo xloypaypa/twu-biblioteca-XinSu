@@ -1,8 +1,6 @@
 package twu.biblioteca.control;
 
-import twu.biblioteca.model.collection.BookCollection;
 import twu.biblioteca.model.collection.MovieCollection;
-import twu.biblioteca.model.entity.Book;
 import twu.biblioteca.model.entity.Entity;
 import twu.biblioteca.model.entity.Movie;
 import twu.biblioteca.view.UIEvent;
@@ -20,7 +18,7 @@ import java.util.Scanner;
  */
 public class CheckoutMovieLogic implements LogicNode {
     @Override
-    public void action() throws Exception {
+    public void action(String param) throws Exception {
         UIThread.getUiThread().addEvent(new UIEvent("Please input movie id.", new UIEventCallBack() {
             @Override
             public void action() {
