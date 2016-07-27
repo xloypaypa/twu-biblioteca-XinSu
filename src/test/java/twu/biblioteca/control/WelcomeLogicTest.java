@@ -27,6 +27,6 @@ public class WelcomeLogicTest extends LogicTesing {
         welcomeLogic.action(null);
 
         Class<? extends LogicNode> clazz = ControlThread.getControlThread().getNextEvent().getKey();
-        assertEquals(LoginLogic.class, clazz);
+        assertEquals(MainMenuLogic.class, clazz);
     }
 }
