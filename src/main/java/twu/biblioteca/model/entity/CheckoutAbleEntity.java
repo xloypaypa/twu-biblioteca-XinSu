@@ -17,7 +17,7 @@ public abstract class CheckoutAbleEntity extends Entity {
         return (boolean) this.getData().get(IS_CHECKOUT_FIELD);
     }
 
-    public void setISCheckout(boolean isCheckout) {
+    private void setISCheckout(boolean isCheckout) {
         this.getData().put(IS_CHECKOUT_FIELD, isCheckout);
     }
 

@@ -36,7 +36,7 @@ public class ReturnLogic implements LogicNode {
         filter.put(CheckoutAbleEntity.IS_CHECKOUT_FIELD, true);
         List<Book> result = BookCollection.getBookCollection().findData(filter);
         for (Book now : result) {
-            now.setISCheckout(false);
+            now.returnEntity();
             BookCollection.getBookCollection().updateData(now);
         }
 

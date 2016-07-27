@@ -3,6 +3,7 @@ package twu.biblioteca.control;
 import org.junit.Test;
 import twu.biblioteca.model.collection.MovieCollection;
 import twu.biblioteca.model.entity.Movie;
+import twu.biblioteca.model.entity.UserEntity;
 import twu.biblioteca.view.UIThread;
 
 import java.util.HashMap;
@@ -27,7 +28,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
     @Test
     public void should_back_to_main_menu_after_input() throws Exception {
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
-        checkoutMovieLogic.getInputMessage("1");
+        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
 
         assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
     }
@@ -40,7 +41,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
         }
 
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
-        checkoutMovieLogic.getInputMessage("1");
+        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
 
         Map<String, Object> filter = new HashMap<>();
         filter.put(Movie.IS_CHECKOUT_FIELD, true);
@@ -56,7 +57,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
         }
 
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
-        checkoutMovieLogic.getInputMessage("1");
+        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
 
         assertEquals("Thank you! Enjoy the movie", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
@@ -69,7 +70,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
         }
 
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
-        checkoutMovieLogic.getInputMessage("1000");
+        checkoutMovieLogic.getInputMessage("1000", new UserEntity("000-1111", "p"));
 
         assertEquals("That movie is not available.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
@@ -82,7 +83,7 @@ public class CheckoutMovieLogicTest extends LogicTesing {
         }
 
         CheckoutMovieLogic checkoutMovieLogic = new CheckoutMovieLogic();
-        checkoutMovieLogic.getInputMessage("1");
+        checkoutMovieLogic.getInputMessage("1", new UserEntity("000-1111", "p"));
 
         assertEquals("That movie is not available.", UIThread.getUiThread().getNextUIEvent().getMessage());
     }
