@@ -1,5 +1,6 @@
 package twu.biblioteca.control;
 
+import javafx.util.Pair;
 import org.junit.Test;
 import twu.biblioteca.model.collection.UserCollection;
 import twu.biblioteca.model.entity.UserEntity;
@@ -34,14 +35,16 @@ public class LoginLogicTest extends LogicTesing {
     }
 
     @Test
-    public void should_show_success_message_and_go_to_main_logic_when_success() throws Exception {
+    public void should_show_success_message_and_go_to_main_logic_with_user_entity_when_success() throws Exception {
         UserCollection.getUserCollection().insertData(new UserEntity("000-0000", "p"));
 
         LoginLogic loginLogic = new LoginLogic();
         loginLogic.getInputMessage("000-0000", "p", MainMenuLogic.class);
 
         assertEquals("login ok", UIThread.getUiThread().getNextUIEvent().getMessage());
-        assertEquals(MainMenuLogic.class, ControlThread.getControlThread().getNextEvent().getKey());
+        Pair<Class<? extends LogicNode>, Object> nextEvent = ControlThread.getControlThread().getNextEvent();
+        assertEquals(MainMenuLogic.class, nextEvent.getKey());
+        assertEquals("000-0000", ((UserEntity) nextEvent.getValue()).getId());
     }
 
     @Test

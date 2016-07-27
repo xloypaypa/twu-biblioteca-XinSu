@@ -36,7 +36,7 @@ public class LoginLogic implements LogicNode {
         List<UserEntity> users = UserCollection.getUserCollection().findData(filter);
         if (!users.isEmpty()) {
             UIThread.getUiThread().addEvent(new UIEvent("login ok"));
-            ControlThread.getControlThread().addEvent((Class<? extends LogicNode>) param);
+            ControlThread.getControlThread().addEvent((Class<? extends LogicNode>) param, users.get(0));
         } else {
             UIThread.getUiThread().addEvent(new UIEvent("login fail"));
             ControlThread.getControlThread().addEvent(LoginLogic.class);
